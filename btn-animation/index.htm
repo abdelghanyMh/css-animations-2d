@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSS btn animation</title>
+
+  <!-- OUR STYLESHEET -->
+  <link rel="stylesheet" href="style.css" type="text/css" media="all">
+  <!--font awesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css"
+    integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+</head>
+
+<body class='body'>
+
+  <div class="btn-container">
+    <button href="#" class="btn btn-1">Hover 1</button>
+    <button href="#" class="btn btn-2">Hover 2</button>
+    <button href="#" class="btn btn-3">Hover 3 </button>
+    <button href="#" class="btn btn-4">Hover 4</button>
+    <button href="#" class="btn btn-5">Hover 5</button>
+    <button href="#" class="btn btn-6">Hover 6</button>
+    <button href="#" class="btn btn-7">Hover 7</button>
+    <button href="#" class="btn btn-8">Hover 8</button>
+    <button href="#" class="btn btn-9">Hover 9</button>
+    <button href="#" class="btn btn-10">Hover 10</button>
+    <button href="#" class="btn btn-12">Hover 12 <span></span></button>
+    <button href="#" class="btn btn-11">Hover 11</button>
+    <button href="#" class="btn btn-13">Hover 13</button>
+    <button href="#" class="btn btn-14"><span>Hover 14</span></button>
+    <button href="#" class="btn btn-15">Hover 15</button>
+    <button href="#" class="btn btn-16">submit </button>
+    <button href="#" class="btn btn-17"><span>b</span>utton</button>
+    <button href="#" class="btn btn-18">Hover 18<span></span></button>
+    <button href="#" class="btn btn-19">Hover 19 <div class="wave"></div></button>
+    <button href="#" class="btn btn-20">Hover 20<span></span></button>
+    <button href="#" class="btn btn-21">Hover 21<span></span></button>
+    <button href="#" class="btn btn-22">Hover 22</button>
+    <button href="#" class="btn btn-23">Hover 23</button>
+    <button href="#" class="btn btn-24">Hover 24</button>
+    <button href="#" class="btn btn-25"><span>button</span><span>button</span>
+    </button>
+  </div>
+
+  <div class="anime anime-11">
+    <ul>
+      <li><i class="fas fa-heart"></i></li>
+      <li><i class="fas fa-glass-martini"></i></li>
+      <li><i class="fas fa-globe"></i></li>
+      <li><i class="fas fa-gift"></i></li>
+    </ul>
+  </div>
+
+  <div class="anime anime-13">
+    <div class="pulse">
+      <i class="fas fa-phone"></i>
+    </div>
+  </div>
+
+  <!-- social-media-icons-animation -->
+  <div class=" anime social-container">
+    <a class="icon" href="#">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a class="icon" href="#">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a class="icon" href="#">
+      <i class="fab fa-google"></i>
+    </a>
+    <a class="icon" href="#">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a class="icon" href="#">
+      <i class="fab fa-youtube"></i>
+    </a>
+  </div>
+
+  <button id="darkMode" onclick="toogleDarkMode()">dark</button>
+
+  <script>
+    const body = document.querySelector('body');
+    let dark = false
+    const toogleDarkMode = () => {
+      if (dark) {
+        dark = false
+        body.style.background = '#fff'
+      }
+      else {
+        dark = true
+        body.style.background = '#000'
+      }
+    }
+
+  </script>
+</body>
+
+</html>

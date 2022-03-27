@@ -1,0 +1,211 @@
+$dark-grey-2: #484848
+$regular-yellow-1: #fff900
+$light-blue-3: #03a9f4
+$white: #fff
+$light-blue-4: #c7ecee
+$dark-blue-1: #1B1464
+$dark-blue-2: #273c75
+$regular-red-1: #EA2027
+
+body
+    margin: 0
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100vh
+    font-family: sans-serif
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: repeat(7,100vh)
+    place-items: center
+
+.fill
+    margin: 0
+    padding: 0
+    font-family: verdana
+    font-size: 120px
+    color: #ccc
+    text-transform: uppercase
+    position: relative
+
+    &::before
+        content: "text"
+        position: absolute
+        top: 0%
+        left: 0
+        color: #262626
+        width: 0%
+        overflow: hidden
+        transition: all 0.5s
+    &:hover
+        &::before
+            width: 100%
+
+//  lighting animation 
+.lighting
+    margin: 0
+    padding: 0
+    display: flex
+    li
+        list-style: none
+        color: $dark-grey-2
+        font-size: 80px
+        letter-spacing: 15px
+        animation: lighting 1.4s linear infinite
+
+@keyframes lighting
+    0%
+        color: $dark-grey-2
+        text-shadow: none
+    90%
+        color: $dark-grey-2
+        text-shadow: none
+    100%
+        color: $regular-yellow-1
+        text-shadow: 0 0 7px #fff900, 0 0 50px #ff6c00
+@for $i from 1 through 50
+    .lighting li:nth-child(#{$i})
+        animation-delay: $i*.1s
+
+// text wave animation
+.wave
+    position: relative
+    width: 500px
+    height: 500px
+
+    h2
+        position: absolute
+        text-align: center
+        line-height: 500px
+        font-size: 170px
+        text-transform: uppercase
+
+        &:nth-child(1)
+            color: transparent
+            -webkit-text-stroke: 1px $light-blue-3
+        &:nth-child(2)
+            color: $light-blue-3
+                    // clip-path: polygon(0 50%, 100% 49%, 100% 100%, 0% 100%)
+            animation: text-wave 2s ease-in-out infinite
+
+@keyframes text-wave
+    0%
+        clip-path: polygon(0% 38%, 21% 40%, 38% 51%, 54% 57%, 75% 57%, 100% 52%, 100% 100%, 0% 100%)
+
+    50%
+        clip-path: polygon(0 49%, 16% 56%, 33% 55%, 55% 50%, 75% 42%, 100% 40%, 100% 100%, 0% 100%)
+
+    100%
+        clip-path: polygon(0% 38%, 21% 40%, 38% 51%, 54% 57%, 75% 57%, 100% 52%, 100% 100%, 0% 100%)
+
+// text clip path animation
+.text-container
+    background-color: #c7ecee //container clr
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    .text-switch
+        position: relative
+        width: 800px
+        font-family: sans-serif
+
+        h1
+            position: absolute
+            top: 50%
+            left: 50%
+            transform: translate(-50%,-50%)
+            margin: 0
+            padding: 0
+            width: 100%
+            text-align: center
+            font-size: 10rem
+            text-transform: uppercase
+            color: #000
+
+            &:nth-child(1):hover ~ h1
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0) // the bottom left point goes to top left
+
+            &:nth-child(2)
+                color: $white
+                background-color: $light-blue-4 // used to hide the black overflow unckeck it to see the diffrent
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0% 100%)
+                transition: .5s
+                &:hover
+                    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+
+// text bg animation
+.text-bg
+    background-color: $dark-blue-2
+    h1
+        font-size: 200px
+        text-align: center
+        text-transform: uppercase
+        background: url(text-bg.jpg)
+        -webkit-background-clip: text
+        color: transparent
+        background-position: 0 0
+        animation: move-bg 15s linear infinite
+
+@keyframes move-bg
+    from
+        background-position: 0 0
+    to
+        background-position: 100% 100%
+
+// word-switch  animation
+.switch-container
+    background-color: $regular-red-1
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    span::before
+        content: 'animations'
+        color: $dark-blue-1
+        text-transform: uppercase
+        animation: word-switch 5s infinite alternate
+         // https://codyhouse.co/demo/animated-headlines/index.html
+
+@keyframes word-switch
+    0%
+        content: 'transforms'
+    50%
+        content: 'transitions'
+
+    80%
+        content: 'eat sleep code'
+
+//  smocky text animation 
+.smocky-container
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: #4b4b4b
+
+    ul
+        margin: 0
+        padding: 0
+        display: flex
+
+        li
+            list-style: none
+            color: white
+            font-size: 100px
+            font-weight: bold
+            letter-spacing: 10px
+            transition: 2s
+        &:hover
+            li
+                transform: rotate(45deg) translateY(-200px)
+                opacity: 0
+                filter: blur(20px)
+
+    @for $i from 2 through 5
+        ul li:nth-child(#{$i})
+            $j: $i - 1
+            transition-delay: ( $j *.4s)

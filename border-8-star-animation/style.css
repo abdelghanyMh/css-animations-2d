@@ -1,0 +1,88 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Raleway", Arial, sans-serif;
+}
+
+h1 {
+  margin: 0;
+  padding: 0;
+  color: #272727;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+span {
+  font-size: 2rem;
+  color: #58c747;
+}
+
+.box {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+}
+.box::before, .box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid #58c747;
+  transition: 0.5s;
+}
+.box::before {
+  border-width: 3px 0;
+  transform: scaleX(0);
+}
+.box::after {
+  border-width: 0 3px;
+  transform: scaleY(0);
+}
+.box:hover::before, .box:hover .rotated::before {
+  transform: scaleX(1);
+  transition-delay: 0;
+}
+.box:hover::after, .box:hover .rotated::after {
+  transform: scaleY(1);
+  transition-delay: 0;
+}
+.box:hover::after {
+  transition-delay: 0.5s;
+}
+.box:hover .rotated::before {
+  transition-delay: 1s;
+}
+.box:hover .rotated::after {
+  transition-delay: 1.5s;
+}
+
+.rotated {
+  position: absolute;
+  inset: 0;
+  transform: rotate(45deg);
+}
+.rotated::before, .rotated::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 3px solid #58c747;
+  transition: 0.5s;
+}
+.rotated::before {
+  border-width: 3px 0;
+  transform: scaleX(0);
+}
+.rotated::after {
+  border-width: 0 3px;
+  transform: scaleY(0);
+}
+
+/*# sourceMappingURL=style.css.map */

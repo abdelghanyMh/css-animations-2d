@@ -1,0 +1,1016 @@
+%transition
+    transition: 300ms ease-in-out
+$regular-yellow-1: #fff200
+$regular-yellow-2: #fffa65
+$regular-yellow-3: #fdc518
+
+$regular-orange-1: #f6b93b
+$regular-orange-2: #c47135
+
+$white: #fff
+$regular-purple-1: #351435
+$regular-purple-2: #250e74
+
+$light-red-1: #ff7675
+$light-red-2: #ee5253
+
+$regular-red-1: #e1332d
+$regular-red-2: tomato
+
+$regular-green-1: #2ce771
+$regular-green-2: #58ea00
+
+$dark-grey-1: #262626
+$dark-grey-2: #222
+$dark-grey-3: #272727
+
+$dark-blue-1: #0a3d62
+$dark-blue-2: #0a3d62
+
+$light-blue-1: #20caff
+$light-blue-2: #00aeff
+$z-index-btn-before: -1
+
+%before_default_style
+    content: ''
+
+    position: absolute
+    top: 0
+    left: 0
+
+    width: 100%
+    height: 100%
+
+body
+    display: grid
+    grid-template-rows: repeat(4, 100vh)
+
+.btn-container
+    display: grid
+    grid-template-columns: repeat(auto-fit, 152px)
+    justify-items: center
+    align-items: center
+    justify-content: space-around
+    align-content: space-evenly
+    margin-top: 10vmin
+
+    position: relative
+#darkMode
+    position: sticky !important
+    right: 0
+    top: 0
+
+.btn
+    font-family: sans-serif
+    text-decoration: none
+    color: #262626
+    font-size: 1.5rem
+
+    border: 1px solid #262626
+    border-radius: 14px
+    transition: border-radius 300ms ease-out
+
+    padding: 1rem
+
+    position: relative
+    overflow: hidden
+    background: none
+    outline: none
+
+    &:active
+        transform: scale(.9)
+    &:hover
+        border-radius: 0px
+
+.btn
+
+    &-1
+        transition: transform 500ms ease-in-out,opacity 300ms ease-out,border-radius 300ms ease-out
+
+        &::before
+            z-index: $z-index-btn-before
+            @extend %before_default_style
+
+            background-color: $regular-yellow-1
+
+            transform-origin: bottom left
+            transform: rotate(-90deg)
+            opacity: 0
+            @extend %transition
+        &:hover
+            &::before
+                transform: rotate(0deg)
+                opacity: 1
+
+    &-2
+        transition: color 500ms ease-out,border-radius 300ms ease-out
+        color: $regular-purple-1
+        border: 1px solid $regular-purple-1
+        &::before
+            z-index: $z-index-btn-before
+            @extend %before_default_style
+
+            background-color: $regular-purple-1
+            width: 0%
+            transition: width 500ms ease-in-out
+        &:hover
+            color: $white
+            &::before
+                width: 100%
+
+    &-3
+        color: $dark-grey-1
+        border-color: $dark-grey-1
+        transition: color 1s ease-out,border-radius 300ms ease-out
+
+        &::before,&::after
+            z-index: $z-index-btn-before
+            @extend %before_default_style
+
+            background-color: $dark-grey-1
+
+            transition: transform 500ms ease-in-out
+        &::before
+            transform: rotateX(90deg)
+        &::after
+            transform: rotateY(90deg)
+
+        &:hover
+            color: $white
+            &::before
+                transform: rotateX(0deg)
+            &::after
+                transform: rotateY(0deg)
+
+    &-4
+
+        color: $regular-red-1
+        border: 1px solid $regular-red-1
+        letter-spacing: -2px
+        transition: border-radius 300ms ease-out,all 500ms ease-out
+        &:hover
+            font-weight: 900
+            letter-spacing: 10px
+            border: 7px solid $regular-red-1
+
+    &-5
+        background-color: $dark-grey-2
+        border: 1px solid $white
+        color: $white
+        &::before
+            z-index: 10
+            content: 'Yeah!'
+
+            position: absolute
+            top: 0
+            left: 0
+
+            width: 100%
+            height: 100%
+
+            background-color: $regular-red-1
+            color: $white
+
+            display: flex
+            align-items: center
+            justify-content: center
+
+            transform: translateY(-100%)
+            transition: transform 300ms ease-in-out
+
+        &:hover::before
+            transform: translateY(0%)
+
+    &-6
+        background-color: $dark-grey-2
+        border: 1px solid $white
+        color: $white
+        transition: all 500ms linear
+        &::before
+            z-index: 10
+            content: ''
+
+            position: absolute
+            top: 0
+            left: -100%
+
+            width: 50%
+            height: 100%
+
+            background-color: $white
+            transform: skew(45deg)
+            transition: left 300ms ease-in-out
+        &:hover
+            background-color: $regular-red-1
+            &::before
+                left: 126%
+
+    &-7
+        background-color: $dark-grey-2
+        color: transparent
+        &::before,&::after
+            z-index: 10
+            content: 'Hover 7'
+
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+
+            display: flex
+            justify-content: center
+            align-items: center
+
+            background-color: $regular-yellow-2
+            color: $dark-grey-1
+            transition: all 500ms ease-in
+        &::after
+            transform: translate(-100%,100%)
+        &:hover
+            &::before
+                transform: translate(100%,-100%)
+            &::after
+                transform: translate(0%,0%)
+
+    &-8
+        border: 1px solid $dark-grey-2
+        perspective: 500px
+        &::before
+
+            content: 'Hover 8'
+
+            position: absolute
+            top: 0
+            left: 0
+
+            width: 100%
+            height: 100%
+
+            background-color: $dark-grey-2
+            color: $white
+
+            display: flex
+            align-items: center
+            justify-content: center
+
+            transform: translateZ(300px)
+            // transform: scale(5)
+            opacity: 0
+            transition: all 500ms ease-in-out
+
+        &:hover::before
+            transform: translateY(0%)
+            opacity: 1
+
+    &-9
+        border: 1px solid $regular-red-2
+        color: $regular-red-2
+        background: none
+
+        &::before
+            content: ''
+            z-index: -1
+            position: absolute
+            // bottom:0
+            top: 0
+            left: 0
+
+            width: 100%
+
+            background-color: $regular-red-2
+            height: 0%
+            // border-radius:  50% 50% 0 0
+            border-radius: 0 0 50% 50%
+
+            transition: all 500ms ease-in-out
+
+        &:hover
+            color: $white
+            &::before
+                height: 190%
+                // border-radius: 0
+
+    &-10
+        background-color: $regular-yellow-1
+        color: $white
+        overflow: visible
+        transition: border-radius 1500ms ease-in
+
+        &::before,&::after
+            content: 'Hover 10'
+
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+
+            display: flex
+            justify-content: center
+            align-items: center
+
+            transform-origin: top
+            transform: rotateX(270deg)
+            transition: all 500ms ease-in
+
+        &::before
+            background-color: $regular-red-1
+
+        &::after
+            background-color: $regular-green-1
+            transition-delay: 500ms
+
+        &:hover
+            &::before, &::after
+                transform: rotateX(0deg)
+
+    &-11
+        border: 1px solid $regular-yellow-1
+        color: transparent
+        transition: all 500ms ease-in
+
+        &::before,&::after
+            background-color: $dark-grey-2
+            content: 'Hover 11'
+            color: $regular-yellow-1
+
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+
+            display: flex
+            justify-content: center
+            align-items: center
+
+            transition: all 500ms
+        &::after
+            left: -100%
+            opacity: 0
+            transform: scale(0) rotateY(360deg)
+
+        &:hover
+            &::before
+                left: 100% //animation begin
+                transform: scale(0) rotateY(360deg)
+                opacity: 0
+            &::after
+                left: 0 //animation begin
+                transform: scale(1) rotateY(0deg)
+                opacity: 1
+
+    &-12
+
+        overflow: visible
+        border: none
+
+        color: $regular-yellow-1
+        transition: all 300ms
+        transition-delay: 300ms
+        span
+            position: absolute
+            inset: 0 0 0 0
+            background-color: $regular-yellow-1
+            transform: scale(0)
+            transition: all 300ms
+            transition-delay: 300ms
+            z-index: -1
+
+        &::before,&::after
+            z-index: 2*$z-index-btn-before
+
+            content: ''
+
+            position: absolute
+            top: 50%
+            width: 20px
+            height: 20px
+
+            border-radius: 50%
+            background-color: $regular-yellow-1
+            transform: translateY(-50%)
+            transition: all 300ms
+            opacity: 0
+
+        &::before
+            left: 0
+            box-shadow: -50px 0 0 $regular-yellow-1
+        &::after
+
+            right: 0
+            box-shadow: 50px 0 0 $regular-yellow-1
+
+        &:hover
+            border: 1px solid $dark-grey-1
+            color: $dark-grey-1
+            span
+                transform: scale(1)
+            &::before,&::after
+                transform: translate(-50%,-50%) //so they set one on top of other
+                opacity: 1
+            &::before
+                left: 50%
+                box-shadow: 30px 0 0 $regular-yellow-1
+            &::after
+                right: 50%
+                box-shadow: -30px 0 0 $regular-yellow-1
+
+    &-13
+        background-color: transparent
+        text-align: center
+        border: none
+        border-radius: 0
+        position: relative
+        color: $white
+        overflow: visible
+
+        transition: all 200ms
+        &::before,&::after
+            content: ''
+
+            position: absolute
+
+            width: 100%
+            height: 100%
+
+            z-index: $z-index-btn-before
+            mix-blend-mode: multiply // blend the &::before,&::after together
+            transition: all 200ms
+
+        &::before
+            top: -3px
+            left: -3px
+            background-color: $light-blue-1
+            transform-origin: top
+        &::after
+            top: 3px
+            left: 3px
+            background-color: $light-red-1
+            transform-origin: bottom
+
+        &:hover
+            color: $dark-grey-1
+            &::before
+                top: -6px
+                left: 0
+                transform: perspective(1000px) rotateX(75deg)
+            &::after
+                top: 6px
+                left: 0
+                transform: perspective(1000px) rotateX(-75deg)
+
+    &-14
+        border: 1px solid $regular-orange-1
+        color: $regular-orange-1
+        background-color: transparent
+        transition: all 500ms
+        // overflow: visible // uncomment me
+        &::before,&::after,span::before,span::after
+            content: ''
+            position: absolute
+
+            width: 25%
+            height: 100%
+            background-color: $regular-orange-1
+            z-index: $z-index-btn-before
+            transition: all .2s
+
+        &::before
+            top: 100%
+            left: 0%
+        &::after
+            top: -100%
+            left: 25%
+            transition-delay: .1s
+        & span
+            &::before
+                top: 100%
+                right: 25%
+                transition-delay: .2s
+
+            &::after
+                top: -100%
+                right: 0
+                transition-delay: .3s
+
+        &:hover
+            color: $dark-grey-2
+            &::before
+                top: 0
+                left: 0
+            &::after
+                top: 0
+                left: 25%
+            & span
+                &::before
+                    top: 0
+                    right: 25%
+                &::after
+                    top: 0
+                    right: 0
+
+    &-15
+        color: $regular-yellow-3
+        border-radius: 0
+        border: none
+        overflow: visible
+        &::before,&::after
+            content: ''
+            position: absolute
+            transition: all 1s
+
+        &::before
+
+            top: -15px
+            left: 0
+
+            width: 100%
+            height: 150%
+
+            border-left: 3px solid red
+            border-right: 3px solid $regular-yellow-3
+        &::after
+            top: 0
+            left: -15px
+
+            width: 125%
+            height: 100%
+
+            border-top: 2px solid red
+            border-bottom: 2px solid $regular-yellow-3
+
+        &:hover
+            &::before
+                transform: rotateY(180deg)
+            &::after
+                transform: rotateX(180deg)
+
+    &-16
+        background-color: $regular-orange-2
+        color: $white
+        text-transform: uppercase
+        padding: 1rem 1.5rem
+        font-family: 'benchNine'
+        border-radius: 0
+        border: none
+        overflow: visible
+        &::before,&::after
+            content: ''
+            position: absolute
+            transition: all 1s
+        &::before
+
+            top: -5px
+            left: -5px
+
+            width: 25%
+            height: 45%
+
+            border-top: 3px solid $regular-orange-2
+            border-left: 3px solid $regular-orange-2
+        &::after
+
+            bottom: -5px
+            right: -5px
+
+            width: 25%
+            height: 45%
+
+            border-bottom: 3px solid $regular-orange-2
+            border-right: 3px solid $regular-orange-2
+        &:hover
+            &::before,&::after
+                width: 100%
+                height: 100%
+
+    &-17
+        padding: 1rem 1.5rem
+        border-radius: 0
+        overflow: visible
+        transition: all 5s
+        span
+            color: transparent
+            position: relative
+            &::before
+                content: 'B'
+                position: absolute
+                color: $dark-grey-1
+                transition: all .2s
+
+        &::before
+            content: ''
+            position: absolute
+            inset: 0
+            background-color: $dark-grey-1
+            z-index: $z-index-btn-before
+            transition: all 1s
+            opacity: 0
+
+        &:hover
+            color: $white
+            span
+                &::before
+                    color: $white
+                    font-size: 3.5rem
+                    transform: translate(-60%,-43%) rotate(360deg)
+            &::before
+                opacity: 1
+                transform: rotate(20deg)
+
+    &-18
+        border: none
+        border-radius: 0
+        color: white
+
+        // overflow: visible
+
+        & span
+            &::before,&::after
+                content: ''
+                position: absolute
+                height: 100%
+                width: 3px
+                background-color: $white
+                transition: all .5s
+            &::before
+                top: -100%
+                right: 0
+            &::after
+                top: 100%
+                left: 0
+
+        &::before,&::after
+            content: ''
+            position: absolute
+            width: 100%
+            height: 3px
+            background-color: $white
+            transition: all .5s
+        &::before
+            top: 0
+            left: -100%
+
+        &::after
+            bottom: 0
+            right: -100%
+
+        &:hover
+            & span
+                &::before,&::after
+                    top: 0
+            &::before
+                left: 0
+            &::after
+                right: 0
+
+    &-19
+        color: $light-blue-2
+        border: 2px solid $light-blue-2
+        border-radius: 0
+        // overflow: visible
+        transition: all .5s ease-out
+        .wave
+            position: absolute
+            left: 0
+            bottom: calc(-100% - 22px)
+            width: 100%
+            height: 100%
+            background-color: $light-blue-2
+            z-index: $z-index-btn-before
+            transition: all .5s ease-out
+
+            &::before
+                content: ''
+                position: absolute
+                top: -22px
+                left: 0
+                background: url(wave.png)
+                height: 22px
+                width: 100%
+                animation: wavy .5s linear infinite
+
+        &:hover
+            color: $white
+            .wave
+                bottom: 0
+
+    &-20
+        border-radius: 0
+        border: none
+        // overflow: visible
+        span
+            position: absolute
+            top: 0
+            left: 0
+            width: calc( 100% - 4px)
+            height: calc( 100% - 4px)
+            background-color: transparent
+            border: 2px solid black
+            z-index: $z-index-btn-before
+            &::before
+                content: ''
+                position: absolute
+                top: 50%
+                left: 50%
+
+                width: 10%
+                height: 500%
+                background-color: $white
+                transform: translate(-50%,-50%) rotate(-55deg)
+                transition: all .5s
+        &:hover
+            color: $white
+            span::before
+                transform: translate(-50%,-50%) rotate(55deg)
+
+                width: 100%
+                background-color: $dark-grey-1
+
+    &-21
+        border-radius: 0
+        border: none
+        span
+            position: absolute
+            top: 0
+            left: 0
+            width: calc( 100% - 4px)
+            height: calc( 100% - 4px)
+            background-color: transparent
+            border: 2px solid black
+            z-index: $z-index-btn-before
+
+            &::before
+                content: ''
+                position: absolute
+                top: 50%
+                left: 50%
+
+                width: 10%
+                height: 500%
+                background-color: $white
+                transform: translate(-50%,-50%) rotate(-55deg)
+                transition: all .5s
+                animation: cuts 5s linear infinite backwards
+                animation-play-state: paused
+
+        &:hover
+            span::before
+                animation-play-state: running
+
+    &-22
+        color: $white
+        border: none
+        border-radius: 0
+        overflow: visible
+        &::before,&::after
+
+            @extend %before_default_style
+            z-index: $z-index-btn-before
+            width: 50%
+            background-color: $light-red-2
+            transform: skew(30deg)
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+        &::before
+            top: -5px
+            left: -1%
+        &::after
+            top: 5px
+            left: 51%
+            background-color: $dark-blue-1
+        &:hover
+            &::before,&::after
+                transform: skew(0deg)
+
+            &::before
+                top: 0
+                left: 50%
+            &::after
+                left: 0
+                top: 0
+
+    &-23
+        // overflow: visible
+        transition: all .5s
+        color: $regular-purple-2
+        border: 1px solid $regular-purple-2
+        &::before,&::after
+            content: ''
+            position: absolute
+            inset: 0
+            z-index: $z-index-btn-before
+            border-top: 31px solid $regular-purple-2
+            border-bottom: 31px solid $regular-purple-2
+            transition: all .5s
+
+        &::before
+            border-right: 31px solid transparent
+            transform: translate(-100%)
+        &::after
+            border-left: 31px solid transparent
+            transform: translate(100%)
+        &:hover
+            color: $white
+            &::before,&::after
+                transform: translate(0)
+
+    &-24
+        overflow: visible
+        border-radius: 100px
+        &:before
+            content: ""
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            background-color: white
+            border-radius: 100px
+            transition: all 0.4s
+            z-index: -1
+
+        &:hover,&:active
+            border-radius: 100px
+            transform: translateY(-3px)
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2)
+            &::before
+                transform: scaleX(1.4) scaleY(1.6)
+                opacity: 0
+
+    &-25
+        position: relative
+        width: 129.609px
+        height: 62px
+        span
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            color: white
+            background-color: #4834d4
+            text-align: center
+            line-height: 60px
+            text-transform: uppercase
+            letter-spacing: 2px
+            font-size: 22px
+            &:nth-child(1):hover ~ span
+                clip-path: polygon(100% 0, 100% 0%, 100% 100%, 100% 100%, 100% 52%)
+
+            &:nth-child(2)
+                background-color: white
+                color: #4834d4
+                transition: 0.5s
+                clip-path: polygon(61% 0, 100% 0%, 100% 100%, 60% 100%, 40% 52%)
+                &:hover
+                    clip-path: polygon(0 0, 100% 0%, 100% 100%, 0 100%, 0 52%)
+
+.anime
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    &-11
+        position: relative
+        width: 100vw
+        ul
+            margin: 0
+            padding: 0
+            display: flex
+            width: 100%
+            justify-content: space-evenly
+            li
+                list-style-type: none
+                width: 120px
+                height: 120px
+                border: 2px solid $dark-blue-2
+                border-radius: 50%
+                display: flex
+                align-items: center
+                justify-content: center
+                transition: all .5s
+                position: relative
+
+                i
+                    font-size: 2rem
+                    color: $dark-blue-2
+                    transition: all .5s
+                &::before,&::after
+                    content: ''
+                    position: absolute
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    border-radius: 50%
+                    z-index: -1
+                    opacity: 0
+                    transition: all .5s
+                &::before
+                    background-color: $dark-blue-2
+                &::after
+                    border: 2px dashed $light-blue-1
+                    box-sizing: border-box
+                &:hover
+                    &::before,&::after
+                        opacity: 1
+                    &::before
+                        transform: scale(.8)
+                    &::after
+                        animation: rotate 10s linear infinite
+                    i
+                        color: $white
+    &-13
+        background-color: $dark-grey-3
+        .pulse
+            width: 100px
+            height: 100px
+            background-color: $regular-green-2
+            color: white
+            border-radius: 50%
+            text-align: center
+            line-height: 100px
+            font-size: 48px
+            position: relative
+            animation: shake 0.3s linear infinite
+
+            &::before,&::after
+
+                content: ''
+                position: absolute
+                inset: -20px
+                border: 1px solid $regular-green-2
+                border-radius: 50%
+                animation: pulse 1.5s linear infinite
+
+            &::after
+                animation-delay: .5s
+
+@keyframes wavy
+    0%
+        background-position-x: 0
+    100%
+        background-position-x: 118px
+
+@keyframes cuts
+    0%
+        transform: translate(-50%,-50%) rotate(-55deg)
+    100%
+        transform: translate(-50%,-50%) rotate(720deg)
+
+@keyframes rotate
+    from
+        transform: scale(.9) rotate(0)
+    to
+        transform: scale(.9) rotate(360deg)
+
+@keyframes pulse
+    from
+        transform: scale(.5)
+        opacity: 0
+    50%
+        transform: scale(1)
+        opacity: 1
+    to
+        transform: scale(1.2)
+        opacity: 0
+
+// social-media-icons-animation
+.social-container
+    text-align: center
+
+.icon
+    width: 90px
+    height: 90px
+    background: #f1f1f1
+    margin: 10px
+    border-radius: 30%
+    color: #10ac84
+    box-shadow: 0 5px 15px -5px #00000070
+    position: relative
+    overflow: hidden
+
+    i
+        line-height: 90px
+        font-size: 25px
+        transition: 0.2s
+    &::before
+        content: ''
+        position: absolute
+        width: 120%
+        height: 120%
+        background-color: #10ac84
+        top: 90%
+        left: -110%
+        transform: rotate(45deg)
+        transition: all 0.8s cubic-bezier(1, -0.36, 0, 2.19)
+
+    &:hover
+        i
+            color: #f1f1f1
+            transform: scale(1.3)
+        &::before
+            top: -11px
+            left: -9px

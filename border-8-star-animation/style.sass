@@ -1,0 +1,79 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800)
+$duration: .5s
+
+body
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    font-family: 'Raleway', Arial, sans-serif
+h1
+    margin: 0
+    padding: 0
+    color: #272727
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    text-align: center
+    font-size: 24px
+    text-transform: uppercase
+span
+    font-size: 2rem
+    color: #58c747
+
+.box
+    position: relative
+    width: 200px
+    height: 200px
+    box-sizing: border-box
+    &::before,&::after
+        content: ""
+        position: absolute
+        inset: 0
+        border: 3px solid #58c747
+        transition: $duration
+    &::before
+        border-width: 3px 0
+        transform: scaleX(0)
+
+    &::after
+        border-width: 0 3px
+        transform: scaleY(0)
+
+    &:hover
+        &::before,.rotated::before
+            transform: scaleX(1)
+            transition-delay: 0
+
+        &::after,.rotated::after
+            transform: scaleY(1)
+            transition-delay: 0
+
+        &::after
+            transition-delay: $duration
+
+        .rotated::before
+            transition-delay: $duration*2
+
+        .rotated::after
+            transition-delay: $duration*3
+
+.rotated
+    position: absolute
+    inset: 0
+    transform: rotate(45deg)
+    &::before,&::after
+        content: ""
+        position: absolute
+        inset: 0
+        border: 3px solid #58c747
+        transition: $duration
+
+    &::before
+        border-width: 3px 0
+        transform: scaleX(0)
+
+    &::after
+        border-width: 0 3px
+        transform: scaleY(0)

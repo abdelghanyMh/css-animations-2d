@@ -1,0 +1,1 @@
+- just using ::before width properites thosenot affect other nodes !

@@ -1,0 +1,577 @@
+$regular-green-1: #26de81
+$regular-green-2: #58ea00
+$light-green-1: #55DDB9
+$light-grey-1: #efefef
+$light-grey-2: #0000001a
+$white: #fff
+$dark-red-1: #a00000
+$regular-red-1: #EA2027
+$regular-red-2: #ff3838
+$light-red-1: #FD6C64
+$light-red-2: #ee5253
+$regular-yellow-1: #fff900
+$regular-yellow-2: #f6b93b
+$light-yellow-1: #FCEBA7
+$dark-blue-1: #1B1464
+$dark-blue-2: #273c75
+$dark-blue-3: #0a3d62
+$dark-blue-4: #2c3e50
+$dark-blue-5: #0B1734
+$dark-blue-6: #2C3A47
+$dark-blue-7: #222D3E
+$light-blue-1: #2e86de
+$light-blue-2: #1F78B0
+$light-blue-3: #03a9f4
+$light-blue-4: #c7ecee
+$dark-grey-1: #262626
+$dark-grey-2: #484848
+$dark-grey-3: #212121
+$white-1: #f2f2f2
+
+@mixin cradle($arm)
+    $rotate: 60deg
+    @if $arm =='right-arm'
+        $rotate: -60deg
+
+    @keyframes #{$arm}
+        from
+            transform: rotate(0deg)
+
+        25%
+            transform: rotate($rotate)
+        50%
+            transform: rotate(0deg)
+        100%
+            transform: rotate(0deg)
+
+*,
+*::before,
+*::after
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+
+body
+    display: grid
+    grid-template-columns: 1fr
+    grid-template-rows: repeat(7,100vh)
+    place-items: center
+    font-family: 'Raleway', Arial, sans-serif
+    perspective: 300px
+
+.anime
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &-3
+        background: url(bg.jpg) bottom left/ cover
+        animation: driving 10s linear infinite
+        position: relative
+        .car
+            position: absolute
+            left: 300px
+            bottom: -50px
+            width: 200px
+            animation: move-left 2s linear 3s infinite alternate
+
+        .motorbike
+            position: absolute
+            left: 700px
+            bottom: 55px
+            width: 150px
+
+    &-5
+        height: 100vh
+        background: url(bg.png)
+        background-position: 0 0
+        animation: animated-pattern 15s linear infinite
+
+    &-7
+        background-color: $dark-grey-1
+        .heart
+            width: 100px
+            height: 100px
+            background-color: $regular-red-2
+            position: relative
+            animation: hearthbeat 1.4s linear infinite
+            transform: rotate(45deg)
+
+            &::before,&::after
+                content: ''
+                position: absolute
+                top: 0
+                left: 0
+                width: 100%
+                height: 100%
+                background-color: #ff3838
+                border-radius: 50%
+            &::before
+                transform: translateY(-50%)
+            &::after
+                transform: translateX(-50%)
+
+    &-10
+        background: url(rain-anime-bg.jpg) center / cover no-repeat
+        .rain
+            height: 100%
+            width: 100%
+            background: url(rain.png)
+            background-position: 0 0
+            animation: rain .3s linear infinite
+
+    &-15
+        background-color: $dark-blue-4
+        .cradle
+            display: flex
+            border-top: 10px solid $white
+            span
+                display: block
+                width: 3px
+                height: 300px
+                background-color: $white
+                margin: 0 29px
+                position: relative
+                &::before
+                    content: ''
+                    position: absolute
+                    inset: auto auto 0 0
+                    width: 60px
+                    height: 60px
+                    border-radius: 50%
+                    background-color: $white
+                    transform: translatex(-50%)
+                &:first-child
+                    animation: left-arm 2s ease-in infinite
+                    transform-origin: top
+                    @include cradle('left-arm')
+                &:last-child
+                    animation: right-arm 2s ease-in infinite
+                    animation-delay: 1s
+                    transform-origin: top
+                    @include cradle('right-arm')
+
+    &-24
+        background-color: $dark-grey-2
+        .container
+            position: relative
+            width: 100%
+            height: 100%
+            overflow: hidden
+            .text
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%,-50%)
+
+                text-transform: uppercase
+                color: $white
+                font-size: 45px
+                border: solid $white
+                border-width: 5px 0
+            .box
+                position: absolute
+                bottom: -100px
+                background-color: $white-1
+                animation: boxes 10s ease-in-out infinite
+                @mixin box-style($size,$left,$delay)
+                    width: $size
+                    height: $size
+                    left: $left
+                    animation-delay: $delay
+
+                &:first-child
+                    @include box-style($size:70px,$left:7%,$delay:0s)
+                &:nth-child(2)
+                    @include box-style($size:65px,$left:15%,$delay:4s)
+                &:nth-child(3)
+                    @include box-style($size:82px,$left:45%,$delay:8s)
+                &:nth-child(4)
+                    @include box-style($size:70px,$left:55%,$delay: 2s)
+                &:nth-child(5)
+                    @include box-style($size:60px,$left:27%,$delay: 6s)
+                &:nth-child(6)
+                    @include box-style($size:55px,$left:60%,$delay: 4s)
+                &:nth-child(7)
+                    @include box-style($size:90px,$left:85%,$delay: 9s)
+                &:nth-child(8)
+                    @include box-style($size:70px,$left:75%,$delay: 4s)
+                &:nth-child(9)
+                    @include box-style($size:45px,$left:10%,$delay: 7s)
+                &:nth-child(10)
+                    @include box-style($size:55px,$left:60%,$delay: 7s)
+
+    &-26
+        background-color: $dark-blue-1
+        .container
+            position: relative
+            width: 100%
+            height: 100%
+            overflow: hidden
+            .text
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%,-50%)
+
+                text-transform: uppercase
+                color: $white
+                font-size: 45px
+                border: solid $white
+                border-width: 5px 0
+            .box
+                position: absolute
+                bottom: -100px
+                background-color: transparent
+                animation: boxes-1 12s ease-in infinite
+                opacity: 0
+                @mixin box-style($top,$left,$border-color,$delay)
+                    width: 10px
+                    height: 10px
+                    top: $top
+                    left: $left
+                    border: 1px solid $border-color
+                    animation-delay: $delay
+
+                &:first-child
+                    @include box-style($top:85%,$left:10%,$border-color:#{$regular-red-1},$delay:0s)
+                &:nth-child(2)
+                    @include box-style($top:40%,$left:25%,$border-color:#{$light-blue-1},$delay:4s)
+                &:nth-child(3)
+                    @include box-style($top:10%,$left:90%,$border-color:#{$regular-red-1},$delay:8s)
+                &:nth-child(4)
+                    @include box-style($top:10%,$left:50%,$border-color:#{$light-blue-1},$delay: 2s)
+                &:nth-child(5)
+                    @include box-style($top:80%,$left:45%,$border-color:#{$regular-red-1},$delay: 6s)
+                &:nth-child(6)
+                    @include box-style($top:50%,$left:75%,$border-color:#{$light-blue-1},$delay: 9s)
+
+    &-28
+        background-color: $dark-grey-1
+        .wave
+            position: relative
+            width: 500px
+            height: 500px
+
+            h2
+                position: absolute
+                text-align: center
+                line-height: 500px
+                font-size: 170px
+                text-transform: uppercase
+
+                &:nth-child(1)
+                    color: transparent
+                    -webkit-text-stroke: 1px $light-blue-3
+                &:nth-child(2)
+                    color: $light-blue-3
+                    // clip-path: polygon(0 50%, 100% 49%, 100% 100%, 0% 100%)
+                    animation: text-wave 2s ease-in-out infinite
+
+    &-31
+        background-color: $light-blue-4
+        .main
+            position: relative
+            width: 800px
+            font-family: sans-serif
+
+            h1
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%,-50%)
+                margin: 0
+                padding: 0
+                width: 100%
+                text-align: center
+                font-size: 10rem
+                text-transform: uppercase
+
+                &:nth-child(1):hover ~ h1
+                    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0) // the bottom left point goes to top left
+
+                &:nth-child(2)
+                    color: $white
+                    background-color: $light-blue-4 // used to hide the black overflow unckeck it to see the diffrent
+                    clip-path: polygon(0 0, 100% 0, 100% 0, 0% 100%)
+                    transition: .5s
+                    &:hover
+                        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+
+@keyframes float
+    from
+        transform: rotate(5deg)
+
+    to
+        transform: rotate(-5deg)
+
+@keyframes driving
+    from
+        background-position: left
+    to
+        background-position: right
+
+@keyframes move-left
+    0%
+        bottom: -50px
+    100%
+        bottom: -12px
+
+@keyframes animated-pattern
+    from
+        background-position: 0 0
+    to
+        background-position: 600px 900px
+
+@keyframes hearthbeat
+    0%
+        transform: rotate(45deg) scale(1)
+    25%
+        transform: rotate(45deg) scale(1)
+    30%
+        transform: rotate(45deg) scale(1.4)
+    50%
+        transform: rotate(45deg) scale(1.2)
+    70%
+        transform: rotate(45deg) scale(1.4)
+    100%
+        transform: rotate(45deg) scale(1)
+
+@keyframes jump
+    0%
+        transform: translateY(0)
+    50%
+        transform: translateY(-150px)
+    100%
+        transform: translateY(0)
+
+@keyframes rain
+    from
+        background-position: 0 0
+    to
+        background-position: 20% 100%
+
+@keyframes rotate
+    from
+        transform: scale(.9) rotate(0)
+    to
+        transform: scale(.9) rotate(360deg)
+
+@keyframes pulse
+    from
+        transform: scale(.5)
+        opacity: 0
+    50%
+        transform: scale(1)
+        opacity: 1
+    to
+        transform: scale(1.2)
+        opacity: 0
+
+@keyframes shake
+    33%
+        transform: rotateZ(5deg)
+
+    67%
+        transform: rotateZ(-5deg)
+
+    100%
+        transform: rotateZ(5deg)
+
+@keyframes chase
+    from
+        top: 0
+        left: 0
+    12.5%
+        top: 0
+        left: 50%
+    25%
+        top: 0
+        left: 50%
+    37.5%
+        top: 50%
+        left: 50%
+    50%
+        top: 50%
+        left: 50%
+    62.5%
+        top: 50%
+        left: 0
+    75%
+        top: 50%
+        left: 0
+    87.5%
+        top: 0
+        left: 0
+    to
+        top: 0
+        left: 0
+
+@keyframes boxes
+    from
+        bottom: -100px
+        opacity: .9
+    to
+        bottom: 100%
+        transform: rotate(180deg)
+        opacity: 0
+
+@keyframes boxes-1
+    from
+        transform: scale(0)
+        opacity: 0
+    50%
+        opacity: 1
+    to
+        transform: scale(20) rotate(960deg)
+        opacity: 0
+
+@keyframes hexagon
+    from
+        left: 0
+    50%
+        left: calc( 100% - 50px )
+        transform: rotate(720deg)
+    to
+        left: 0
+
+@keyframes hexagon-line
+    from
+        transform: rotate(30deg)
+    25%
+        transform: rotate(0deg)
+    50%
+        transform: rotate(-30deg)
+    75%
+        transform: rotate(0deg)
+    to
+        transform: rotate(30deg)
+
+// loading animations
+
+@keyframes loading
+    from
+        transform: rotateX(0deg) rotateY(0deg)
+
+    50%
+        transform: rotateX(0deg) rotateY(180deg)
+    to
+        transform: rotateX(180deg) rotateY(180deg)
+
+@keyframes loading-1
+    from
+        color: red
+        transform: translateX(-50px)
+        letter-spacing: 20px
+        opacity: 0
+    10%
+        opacity: 1
+
+    50%
+        letter-spacing: -20px
+        opacity: 1
+
+    to
+        color: blue
+        transform: translateX(50px)
+        letter-spacing: 20px
+        opacity: 0
+@for $i from 1 through 7
+    .loading-1 li:nth-child(#{$i})
+        animation-delay: ($i - 1)*.2s
+
+@keyframes loading-2
+    0%
+        width: 100px
+        height: 100px
+
+    10%
+        width: 100px
+        height: 100px
+
+    50%
+        width: 150px
+        height: 150px
+
+    90%
+        width: 100px
+        height: 100px
+
+    100%
+        width: 100px
+        height: 100px
+@keyframes rotate-1
+    0%
+        transform: rotate(0deg)
+
+    10%
+        transform: rotate(0deg)
+
+    50%
+        transform: rotate(0deg)
+
+    90%
+        transform: rotate(90deg)
+
+    100%
+        transform: rotate(90deg)
+
+@keyframes loading-3
+    from
+        width: 0
+    50%
+        width: 100%
+    to
+        width: 0
+
+// loading 4  6 
+@keyframes rotate-3
+    from
+        transform: rotate(0deg)
+    to
+        transform: rotate(360deg)
+
+// loading 5
+@keyframes line
+    from
+        transform: scaleX(0)
+        transform-origin: left
+    45%
+        transform: scaleX(1)
+        transform-origin: left
+    50%
+        transform: scaleX(1)
+        transform-origin: right
+    to
+        transform: scaleX(0)
+        transform-origin: right
+
+@keyframes loading-7
+    0%
+        width: 100%
+        height: 100%
+    100%
+        width: 0
+        height: 0
+
+@keyframes loading-8
+    from
+        transform: scaleY(.1)
+    35%
+        transform: scaleY(1)
+    60%,to
+        transform: scaleY(.1)
+
+// loading 9
+@keyframes split
+    from
+        transform: translateX(100%)
+
+    25%
+        transform: translateX(0)
+    75%
+        transform: translateX(0)
+    to
+        transform: translateX(-100%)
