@@ -384,6 +384,46 @@ body {
   clip-path: inset(50% 0 0 0);
   animation-direction: reverse;
 }
+.anime-28 {
+  overflow: hidden;
+}
+.anime-28 .container {
+  width: 390px;
+  height: 744px;
+  background-color: #0000001a;
+  position: relative;
+  overflow: hidden;
+}
+.anime-28 .circle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  animation: bouncy 800ms ease-in-out forwards;
+}
+.anime-28 .circle-container .circle {
+  background: #ff6e7f;
+  background: -webkit-linear-gradient(#bfe9ff, #ff6e7f);
+  background: linear-gradient(#bfe9ff, #ff6e7f);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  animation: expand 1s linear 800ms forwards;
+  animation-duration: 1.3s;
+  animation-timing-function: ease-in-out;
+}
+.anime-28 .info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 100%;
+  width: 100%;
+  animation: fadeInUp 0.3s cubic-bezier(1, 0.47, 0, 1.27) 1.8s forwards;
+}
 
 @keyframes float {
   from {
@@ -648,6 +688,68 @@ body {
   }
   to {
     transform: translateX(-100%);
+  }
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 1000%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}
+@keyframes bouncy {
+  from {
+    transform: translateY(-100%);
+  }
+  75% {
+    transform: translateY(5%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes expand {
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(2.5);
+  }
+  19% {
+    transform: scale(1.9);
+  }
+  24% {
+    transform: scale(2);
+  }
+  35% {
+    transform: scale(2);
+  }
+  40% {
+    transform: scale(4.5);
+  }
+  45% {
+    transform: scale(3.9);
+  }
+  56% {
+    transform: scale(4);
+  }
+  69% {
+    transform: scale(4);
+  }
+  70% {
+    transform: scale(1.5);
+  }
+  75% {
+    transform: scale(1.2);
+  }
+  80% {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(100);
   }
 }
 

@@ -26,7 +26,11 @@ $dark-grey-1: #262626
 $dark-grey-2: #484848
 $dark-grey-3: #212121
 $white-1: #f2f2f2
-
+@mixin absCenter()
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
 *,
 *::before,
 *::after
@@ -376,6 +380,57 @@ body
 
         // clip-path: inset(0 0 50% 0);
 
+    &-28
+        $size: 30px
+        $Bouncy-duration: 3s
+        overflow: hidden
+        .container
+            width: 390px
+            height: 744px
+            background-color: $light-grey-2
+            position: relative
+            overflow: hidden
+
+        // .circle,.info
+        //     @include absCenter
+        .circle-container
+
+            display: flex
+            justify-content: center
+            align-items: center
+            overflow: hidden
+
+            height: 100%
+            animation: bouncy 800ms ease-in-out forwards
+
+            .circle
+                $expand-duration: 1s
+                background: #ff6e7f
+                background: -webkit-linear-gradient( #bfe9ff, #ff6e7f)
+                background: linear-gradient( #bfe9ff, #ff6e7f)
+
+                width: $size
+                height: $size
+                border-radius: 50%
+                animation: expand 1s linear 800ms forwards
+                animation-duration: calc($expand-duration * 1.3)
+                animation-timing-function: ease-in-out
+
+        .info
+
+            display: flex
+            justify-content: center
+            align-items: center
+
+            position: absolute
+            top: 50%
+            left: 50%
+
+            height: 100%
+            width: 100%
+
+            animation: fadeInUp .3s cubic-bezier(1, 0.47, 0, 1.27) 1.8s forwards
+
 // loading animations
 
 @keyframes float
@@ -573,3 +628,54 @@ body
         transform: translateX(0)
     to
         transform: translateX(-100%)
+
+@keyframes fadeInUp
+    from
+        opacity: 0
+        transform: translate3d(0,1000%,0)
+
+    to
+        opacity: 1
+        transform: translate3d(-50%,-50%,0)
+
+@keyframes bouncy
+    from
+        transform: translateY(-100%)
+
+    75%
+        transform: translateY(5%)
+
+    to
+        transform: translateY(0)
+
+@keyframes expand
+    0%
+        transform: scale(1)
+
+    14%
+        transform: scale(2.5)
+    19%
+        transform: scale(1.9)
+    24%
+        transform: scale(2)
+
+    35%
+        transform: scale(2)
+    40%
+        transform: scale(4.5)
+    45%
+        transform: scale(3.9)
+    56%
+        transform: scale(4)
+
+    69%
+        transform: scale(4)
+    70%
+        transform: scale(1.5)
+    75%
+        transform: scale(1.2)
+    80%
+        transform: scale(1)
+
+    to
+        transform: scale(100)
